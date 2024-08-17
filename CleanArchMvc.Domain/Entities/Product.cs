@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 namespace CleanArchMvc.Domain.Entities
 {
-    internal class Product : Entity
+    public class Product : Entity
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
