@@ -13,7 +13,7 @@ public class ProductService : IProductService
 
     public ProductService(IProductRepository productRepository, IMapper mapper)
     {
-        _productRepository = productRepository;
+        _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         _mapper = mapper;
     }
 
