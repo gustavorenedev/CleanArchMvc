@@ -17,33 +17,33 @@ public class CategoryService : ICategoryService
         _mapper = mapper;
     }
 
-    public async Task AddAsync(CategoryDTO categoryDTO)
+    public async Task Add(CategoryDTO categoryDTO)
     {
         var categoryEntity = _mapper.Map<Category>(categoryDTO);
-        await _categoryRepository.Create(categoryEntity);
+        await _categoryRepository.CreateAsync(categoryEntity);
     }
 
-    public async Task<CategoryDTO> GetByIdAsync(int? id)
+    public async Task<CategoryDTO> GetById(int? id)
     {
-        var categoryEntity = await _categoryRepository.GetById(id);
+        var categoryEntity = await _categoryRepository.GetByIdAsync(id);
         return _mapper.Map<CategoryDTO>(categoryEntity);
     }
 
-    public async Task<IEnumerable<CategoryDTO>> GetCategoriesAsync()
+    public async Task<IEnumerable<CategoryDTO>> GetCategories()
     {
-        var categoriesEntity = await _categoryRepository.GetCategories();
+        var categoriesEntity = await _categoryRepository.GetCategoriesAsync();
         return _mapper.Map<IEnumerable<CategoryDTO>>(categoriesEntity);
     }
 
-    public async Task RemoveAsync(int? id)
+    public async Task Remove(int? id)
     {
-        var categoryEntity = _categoryRepository.GetById(id).Result;
-        await _categoryRepository.Remove(categoryEntity);
+        var categoryEntity = _categoryRepository.GetByIdAsync(id).Result;
+        await _categoryRepository.RemoveAsync(categoryEntity);
     }
 
-    public async Task UpdateAsync(CategoryDTO categoryDTO)
+    public async Task Update(CategoryDTO categoryDTO)
     {
         var categoryEntity = _mapper.Map<Category>(categoryDTO);
-        await _categoryRepository.Update(categoryEntity);
+        await _categoryRepository.UpdateAsync(categoryEntity);
     }
 }
