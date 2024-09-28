@@ -10,5 +10,4 @@ public interface IProductService
     Task Add(ProductDTO productDTO);
     Task Update(ProductDTO productDTO);
     Task Remove(int? id);
-
 }
