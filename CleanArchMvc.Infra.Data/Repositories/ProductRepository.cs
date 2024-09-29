@@ -22,12 +22,6 @@ public class ProductRepository : IProductRepository
 
     public async Task<Product> GetByIdAsync(int? id)
     {
-        var product = await _context.Products.FindAsync(id);
-        return product!;
-    }
-
-    public async Task<Product> GetProductCategoryAsync(int? id)
-    {
         // return the product and the category related to it
         // eager loading
         var productCategory = await _context.Products.Include(c => c.Category)
@@ -35,6 +29,16 @@ public class ProductRepository : IProductRepository
 
         return productCategory!;
     }
+
+    //public async Task<Product> GetProductCategoryAsync(int? id)
+    //{
+    //    // return the product and the category related to it
+    //    // eager loading
+    //    var productCategory = await _context.Products.Include(c => c.Category)
+    //        .SingleOrDefaultAsync(p => p.Id == id);
+
+    //    return productCategory!;
+    //}
 
     public async Task<IEnumerable<Product>> GetProductsAsync()
     {
