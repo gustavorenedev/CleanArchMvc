@@ -26,7 +26,7 @@ public class CategoriesController : ControllerBase
         return Ok(categories);
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id:int}", Name = "GetCategory")]
     public async Task<ActionResult<CategoryDTO>> Get(int id)
     {
         var category = await _categoryService.GetById(id);
@@ -36,4 +36,15 @@ public class CategoriesController : ControllerBase
         }
         return Ok(category);
     }
+
+    [HttpPost]
+    public async Task<ActionResult> Post([FromBody] CategoryDTO categoryDTO)
+    {
+        if (categoryDTO == null)
+            return BadRequest("Invalid Data");
+
+        await _categoryService.Add(categoryDTO);
+
+        return new CreatedAtRouteResult("GetCategory", new {id = categoryDTO.Id}, categoryDTO);
+    }   
 }
