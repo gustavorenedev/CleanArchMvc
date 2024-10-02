@@ -1,5 +1,6 @@
-
 # ASP.NET Core MVC Clean Architecture Project
+
+![image](https://github.com/user-attachments/assets/4a8ad1b0-bfb5-45d7-bd0e-4157f03fd9c6)
 
 ## Descrição do Projeto
 
