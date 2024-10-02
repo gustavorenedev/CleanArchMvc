@@ -1,5 +1,6 @@
 ﻿using CleanArchMvc.API.DTOs;
 using CleanArchMvc.Domain.Account;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -37,7 +38,7 @@ public class TokenController : ControllerBase
         }
     }
 
-
+    [AllowAnonymous]
     [HttpPost("LoginUser")]
     public async Task<ActionResult<UserToken>> Login([FromBody] LoginDTO loginDTO)
     {
