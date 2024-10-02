@@ -65,8 +65,8 @@ A Clean Architecture garante que as dependências entre os projetos respeitem as
 
 1. **Clonar o Repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
-   cd seu-projeto
+   git clone [https://github.com/seu-usuario/seu-projeto.git](https://github.com/gustavorenedev/CleanArchMvc.git)
+   cd CleanArchMvc
    ```
 
 2. **Restaurar as Dependências**:
@@ -74,14 +74,12 @@ A Clean Architecture garante que as dependências entre os projetos respeitem as
    dotnet restore
    ```
 
-3. **Aplicar Migrações e Atualizar o Banco de Dados**:
-   No projeto Infra.Data
+3. **Aplicar Migrações e Atualizar o Banco de Dados no projeto Infra.Data**:
    ```bash
    dotnet ef database update
    ```
 
-5. **Rodar a Aplicação**:
-   No projeto WebUI ou API
+5. **Rodar a Aplicação no projeto WebUI ou API**:
    ```bash
    dotnet run
    ```
