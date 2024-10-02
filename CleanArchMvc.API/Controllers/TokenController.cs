@@ -21,6 +21,23 @@ public class TokenController : ControllerBase
         _configuration = configuration;
     }
 
+    [HttpPost("RegisterUser")]
+    public async Task<ActionResult<UserToken>> Register([FromBody] LoginDTO loginDTO)
+    {
+        var result = await _authenticate.RegisterUser(loginDTO.Email!, loginDTO.Password!);
+
+        if (result)
+        {
+            return Ok($"User {loginDTO.Email} was create successfully");
+        }
+        else
+        {
+            ModelState.AddModelError(string.Empty, "Invalid Register attempt.");
+            return BadRequest(ModelState);
+        }
+    }
+
+
     [HttpPost("LoginUser")]
     public async Task<ActionResult<UserToken>> Login([FromBody] LoginDTO loginDTO)
     {
